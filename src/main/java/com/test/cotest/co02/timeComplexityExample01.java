@@ -1,4 +1,4 @@
-package com.test.cotest;
+package com.test.cotest.co02;
 
 // run-coverage 
 public class timeComplexityExample01 {

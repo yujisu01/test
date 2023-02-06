@@ -1,4 +1,4 @@
-package com.test.cotest;
+package com.test.cotest.co02;
 // 버블정렬(O(n의제곱), 병합정렬(O(nlogn)
 public class timeComplexityExample02 {
 	public static void main(String[] args) {
@@ -10,7 +10,10 @@ public class timeComplexityExample02 {
 		int N = 1000000;
 		int cnt =0;
 		for(int i=0; i<N; i++) {
-			System.out.println("연산횟수:"+cnt++);
+			for(int j=0; j<N; j++) {
+				System.out.println("연산횟수:"+cnt++);
+				
+			}
 		}
 	}
 }
