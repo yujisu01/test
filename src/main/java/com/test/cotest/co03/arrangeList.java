@@ -10,19 +10,20 @@ public class arrangeList {
 		// 4.for문 돌리고, 
 		// 5.sum출력
 		
-		Scanner sc= new Scanner(System.in);
+		Scanner sc=  new Scanner(System.in);
 		
-	//	int N= sc.nextInt();
-		
+		int N = sc.nextInt();
 		String sNum = sc.next();
-		char[] cNum = sNum.toCharArray(); 
-		System.out.println(cNum);
-	//	System.out.println(sNum);
-		int sum = 0;
+		
+		char[] cNum = sNum.toCharArray();
+		
+		int sum =0;
+		
 		for(int i=0; i<cNum.length; i++) {
-			sum += cNum[i] - '0';
+			sum += cNum[i]-'0';
 		}
 		System.out.println(sum);
+		
 	}
 
 }
