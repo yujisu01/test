@@ -27,7 +27,6 @@ public class average {
 		}
 		System.out.println(sum*100/max/N);
 		
-		
 	}
 
 }
