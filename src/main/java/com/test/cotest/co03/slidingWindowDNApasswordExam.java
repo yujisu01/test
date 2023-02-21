@@ -1,4 +1,10 @@
 package com.test.cotest.co03;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 /*
  * 슬라이딩윈도우가 뭘까? 2개의 포인터로 범위 지정한다음 범위를 유지한채로, 이동하여 문제 해결하는거
  * 투포인터 알고리즘과 비슷(i,j..)
@@ -14,9 +20,27 @@ package com.test.cotest.co03;
  * 
  * ( 단 부분 문자열 등장위치가 다르면 부분문자열 내용이같더라도 다른 문자열로 취급함. )
  * 
+ * 
  */
-public class slidingWindow {
-	public static void main(String[] args) {
+public class slidingWindowDNApasswordExam {
+	
+	static int checkArr[];
+	static int myArr[];
+	static int checkSecret;
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(bf.readLine());
 		
+		// 전체 문자열 크기 선언
+		int S = Integer.parseInt(st.nextToken());
+		// 부분문자열 크기 선언
+		int P = Integer.parseInt(st.nextToken());
+		int result= 0;
+		
+		char A[] = new char[5]; 	// 문자열 데이터 (+1)
+		checkArr = new int[4];		// 비밀번호 체크배열
+		myArr = new int[4];			// 현재상태 배열
+		checkSecret =0;				// 몇개의 문자와 관련된 개수를 충족했는지 판단하는 변수
 	}
 }
