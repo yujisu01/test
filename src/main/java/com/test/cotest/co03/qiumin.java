@@ -49,9 +49,13 @@ public class qiumin {
 			
 			//범위에서 벗어난 값은 덱에서 제거
 			//슬라이딩윈도우(L)의 범위를 벗어난 값은 덱에서 제거한다.
+			
+			// 이거 나한테 설명좀해주실분
 			if(myDeque.getFirst().index <= i - L) {
+				System.out.println("myDeque.getFirst().index=" + myDeque.getFirst().index);
 				System.out.print("i=" + i);
 				System.out.println(",L=" + L);
+				
 				myDeque.removeFirst();
 			} 
 			bw.write(myDeque.getFirst().value + " ");
