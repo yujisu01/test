@@ -11,49 +11,50 @@ package com.test.cotest.co03;
  * 오름차순 수열ㅇ르 만들기 위한 연산수열을 출력함. push연산은 +, pop연산은 - 로출력. 불가능할때는 NO 출력
  */
 
-//import java.io.BufferedReader;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class stackQue {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int[] A = new int[N];
-		for(int i=0; i<N; i++) {
-			A[i] = sc.nextInt();
-		}
-		// 스택 선언
-		Stack<Integer> stack = new Stack();
-		StringBuffer bf = new StringBuffer();
-		
-		int num=1;
-		boolean result= true;
-		for(int i=0; i<A.length; i++) {
-			int su= A[i]; 		// 현재 수열의수
-			if(su>=num) {		// 현재 수열값>=오름차순 자연수: 값이 같아질떄까지 push()수행.
-				while(su>=num) {
-					stack.push(num++);
-					bf.append("+ ");
-					//System.out.println(stack.push(num++));
-				}
-				stack.pop();
-				bf.append("- ");
-				//System.out.println(stack.pop());
-			}else {			// 현재수열값<오름차순자연수 :pop()을 수행해 수열원소를 꺼냄
-				int n = stack.pop();
-				
-				if(su<n) {
-			//		System.out.println("NO");
-					result=false;
-					break;
-				}
-				else {
-					bf.append("-\n");
-				}
+public class stackQue {public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+	int N = sc.nextInt();
+	int[] A = new int[N];
+	for(int i=0; i<N; i++) {
+		A[i] = sc.nextInt();
+	}
+	// 스택 선언
+	Stack<Integer> stack = new Stack();
+	StringBuffer bf = new StringBuffer();
+	
+	int num=1; 
+	boolean result= true;
+	for(int i=0; i<A.length; i++) {
+		int su= A[i]; 		// 현재 수열의수
+		if(su>=num) {		// 현재 수열값>=오름차순 자연수: 값이 같아질떄까지 push()수행.
+			while(su>=num) {
+				stack.push(num++);
+				bf.append("+ ");
+				System.out.println("현재수열값:"+su);
+				System.out.println("오름차순 자연수:" + num);
+			}
+			stack.pop();
+			bf.append("- ");
+			//System.out.println(stack.pop());
+		}else {			// 현재수열값<오름차순자연수 :pop()을 수행해 수열원소를 꺼냄
+			int n = stack.pop();
+			
+			if(su<n) {
+				System.out.println("현재수열값:"+su);
+				System.out.println("오름차순 자연수:" + n);
+				result=false;
+				break;
+				// 안되는 예시: 4, [1,4,2,3] 
+				// 이유: 2 에서, 현재수열값보다 스택에 쌓이는 오름차순 자연수가 더크므로 
+			}
+			else {
+				bf.append("-\n");
 			}
 		}
-		if(result) System.out.println(bf.toString());
 	}
-
+	if(result) System.out.println(bf.toString());
+}
 }
