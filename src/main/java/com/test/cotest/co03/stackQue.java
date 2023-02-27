@@ -52,9 +52,11 @@ public class stackQue {public static void main(String[] args) {
 			}
 			else {
 				bf.append("-\n");
+				
 			}
 		}
 	}
 	if(result) System.out.println(bf.toString());
+	sc.close();
 }
 }

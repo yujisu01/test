@@ -20,10 +20,10 @@ import java.util.Stack;
 public class stack_rightBigNumber {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-		
+		// (1) 선언
 		// 수열의 크기
 		int N = Integer.parseInt(bf.readLine());	
-		// N만큼 A[]배열 선언 
+		// N만큼 A[]배열 선언  
 		int A[] = new int[N];
 		// 정답 배열 선언
 		int[] ans = new int[N];	
@@ -33,15 +33,19 @@ public class stack_rightBigNumber {
 		// 현재 인덱스를 스택에 push하고 다음 인덱스로 넘어가기
 		// 과정 1~3을 수열길이만큼 반복한 다음, 현재스택에 남아있는 인덱스에 -1을 저장한다
 		
-		String[] str = bf.readLine().split("  ");
+		// (2) A[] 배열 저장할수 있게 준비
+		String[] str = bf.readLine().split(" ");
 		for(int i=0; i<N; i++) {
 			A[i] = Integer.parseInt(str[i]);
 		}
-		Stack<Integer> myStack = new Stack<Integer>();
+		
+		// (3) 스택 선언 & 초기화
+		Stack<Integer> myStack = new Stack();
 		
 		// 스택 초기화 해주기 (처음에는 항상 스택이 비어있으므로, 최초값을 push해 초기화)
 		myStack.push(0);
 		
+		// (4) 조건에 맞는 for문 반복
 		for(int i=1; i<N; i++) {
 			// 스택이 비어있지 않고, 현재 스택의 top인덱스가 가리키는 숫자가 top인덱스보다(peek) 클경우
 			while(!myStack.isEmpty() && A[i] > A[myStack.peek()]) {
@@ -49,21 +53,21 @@ public class stack_rightBigNumber {
 			}
 			myStack.push(i);		// 신규데이터push
 		}
+		
+		// (5) -1
 		//  반복문 다 돌고 나왔는데 스택이 비어있지 않다면 빌 떄까지
 		while(!myStack.isEmpty()) { 
 			// 스택에 쌓인 index에 -1을 넣음 
 			ans[myStack.pop()] = -1;
 		}
+		
+		// (6) ans[] 배열에 저장
 		BufferedWriter bw= new BufferedWriter(new OutputStreamWriter(System.out));
 		for(int i=0; i<N; i++) {
 			bw.write(ans[i] + " ");
 		}
 		bw.write("\n");
 		bw.close();
-		
-		
-		
-		
 		
 		
 	}
