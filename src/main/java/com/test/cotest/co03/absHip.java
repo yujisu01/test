@@ -18,7 +18,23 @@ public class absHip {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		PriorityQueue<Integer> q = new PriorityQueue<>();
+		PriorityQueue<Integer> q = new PriorityQueue<>(
+//				(o1,o2) -> {
+//			int first_abs =Math.abs(o1);
+//			int second_abs =Math.abs(o2);
+//			
+//			System.out.println(o1);
+//			System.out.println(o2);
+//			// 절댓값이 같으면 
+//			if(first_abs == second_abs)	
+//				// 음수 우선정렬 
+//				return o1>o2 ? 1:-1;	
+//			// 절댓값이 같지 않으면
+//			else
+//				// 절댓값을 기준으로 정렬하기 ..
+//				return first_abs - second_abs;		
+//		}
+		);
 		
 		for(int i=0; i<N; i++) {
 			int request = Integer.parseInt(br.readLine());
