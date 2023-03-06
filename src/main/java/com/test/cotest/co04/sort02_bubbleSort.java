@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+
 public class sort02_bubbleSort {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,10 +19,13 @@ public class sort02_bubbleSort {
 		Arrays.sort(A);
 		// 최댓값 선언
 		int max= 0;
+		int tomato=0;
 		
 		for(int i=0; i<N; i++) {
 			// 최댓값보다 A[i]의 인덱스가 클때
-			if(max < A[i].index - i) max= A[i].index - i;
+			if(max < A[i].index - i) 
+				tomato = max= A[i].index - i;
+				System.out.println("tomato=" + tomato);
 		}
 		System.out.println(max + 1); // 최댓값보다 +1 
 	}
@@ -41,6 +45,9 @@ public class sort02_bubbleSort {
 		}
 		 @Override
 		 public int compareTo(mData o) {
+			 System.out.print("this.value =" + this.value);
+			 System.out.println("/ o.value = " + o.value);
+			// System.out.printf("/ t.value - o.value = " , this.value - o.value , "\n");
 			 return this.value - o.value;
 		 }
 	}
