@@ -12,7 +12,7 @@ public class sort01 {
 	
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
-		int[] A = new int[N];
+		int[] A = new int[N]; 
 		
 		// A[i] 배열 입력 
 		for(int i=0; i<N; i++) {
