@@ -44,7 +44,7 @@ public class sort04_insert {
 			// A[i] 합해야 내가 입력한거 대로 합배열 출력됨
 			S[i] = S[i-1]+A[i];
 			System.out.println(S[i]);
-			
+			 
 		}
 		// sum출력
 		int sum=0;
