@@ -8,7 +8,7 @@ CITY 테이블 은 다음과 같이 설명됩니다.
 
 
 
--- success
+-- success 230309
 
 SELECT *
 FROM CITY
