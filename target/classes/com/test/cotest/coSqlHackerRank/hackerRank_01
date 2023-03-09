@@ -3,6 +3,12 @@ The CountryCode for America is USA.
 
 The CITY table is described as follows:
 
+인구가 100000보다 큰 CITY 테이블의 모든 미국 도시에 대한 모든 열을 쿼리합니다. 미국의 국가 코드는 USA이다.
+CITY 테이블 은 다음과 같이 설명됩니다.
+
+
+
+-- success
 
 SELECT *
 FROM CITY
