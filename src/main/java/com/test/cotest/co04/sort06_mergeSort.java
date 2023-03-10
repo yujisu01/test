@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 public class sort06_mergeSort {
 	public static int[]A, tmp;
 	public static long result;
+	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -78,5 +79,4 @@ public class sort06_mergeSort {
 			}
 			// while문 종료
 	}
-
 }
