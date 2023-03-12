@@ -31,10 +31,13 @@ public class sort07_bubbleSort02 {
 	private static void merge_sort(int s, int e) {
 		if(e-s<1)
 			return;
-		int m = s + (e-s)/2;
+		// int m = s + (e-s)/2;
+		int m = s+(e-s)/2;
 		
 		merge_sort(s,m);
+		//System.out.printf("s:"+s+",m:"+m+"\n");
 		merge_sort(m+1,e);
+		//System.out.printf("m+1:"+ (m+1) +",e:"+e+"\n");
 		for(int i=s; i<=e; i++) {
 			tmp[i] = A[i];
 		}
@@ -45,19 +48,21 @@ public class sort07_bubbleSort02 {
 		// 오름차순 정렬
 		while(index1 <= m && index2 <= e) {
 			if(tmp[index1] > tmp[index2]) {
-				System.out.printf("셈 이전 result값 :" + result + "\n");
+				//System.out.printf("셈 이전 result값 :" + result + "\n");
 				// 뒤쪽데이터 값이 작은경우 result업데이트 
 				// swap 개수 세기
 				// 현재 남아있는 앞쪽 데이터 개수만큼 결과값을 더함 
-				result = result + index2 - k; 
+				result+=  index2 - k; 
+				System.out.printf("tmp[index1] : " + tmp[index1] + " , tmp[index2] : " + tmp[index2] + "\n");
 				System.out.printf("index2 = " + index2 + ", " + "k = " + k + "\n");
 				A[k] = tmp[index2];
 				k++;
-				index2++;
-			}else {
+				index2++; 
+			}else { 
 				A[k] = tmp[index1];
 				k++;
 				index1++;
+				System.out.println("-------");
 			} 
 		}
 		// 순서대로 출력되게
