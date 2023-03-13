@@ -58,7 +58,7 @@ public class sort08_radixSort {
 			// 0~9 까지 라서 int[10] 
 			int[] bucket = new int[10];
 			
-			// 1의 자리부터 시작
+			// 1의 자리부터 시작 
 			for(int i=0; i<A.length; i++) {
 				bucket[(A[i] / jarisu) % 10]++;
 			}
@@ -83,6 +83,6 @@ public class sort08_radixSort {
 		}
 		
 		
-	}
+	}// 낼 다시하자 낼 다시 낼 다시 다시 다시 하자 
 
 }
