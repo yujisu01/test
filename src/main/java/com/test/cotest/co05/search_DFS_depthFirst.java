@@ -24,6 +24,7 @@ import java.util.StringTokenizer;
 public class search_DFS_depthFirst {
 	static ArrayList<Integer>[] A;
 	static boolean visited[];
+	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -34,16 +35,20 @@ public class search_DFS_depthFirst {
 		visited = new boolean[n+1];
 		
 		for(int i=1; i<n+1; i++) {
-			A[i] = new ArrayList<Integer>();   
+			A[i] = new ArrayList<Integer>();
 		}
+		// m=엣지 
 		for(int i=0; i<m; i++) {
 			st = new StringTokenizer(br.readLine());
 			int s =Integer.parseInt(st.nextToken());
 			int e =Integer.parseInt(st.nextToken());
 			A[s].add(e);
+			System.out.printf("A[s] = "+A[s] + "\n" );
 			A[e].add(s);
+			System.out.printf("A[e]= "+A[e] + "\n");
 		}
 		int count=0;
+		
 		for(int i=1; i<n+1; i++) {
 			if(!visited[i]) {
 				count++;
@@ -59,6 +64,7 @@ public class search_DFS_depthFirst {
 			return;
 		}
 		visited[v]=true;
+		
 		for(int i : A[v]) {
 			if(visited[i] == false) {
 				DFS(i);
