@@ -43,7 +43,8 @@ public class search_isPrime {
 	// 소수 검사
 	// 나중에 수정하기
 	static boolean isPrime(int num) {
-		for(int i=2; i<=num/2; i++) 
+		//for(int i=2; i<=num/2; i++) 
+		for(int i=2; i<=Math.sqrt(num); i++) 
 			if(num % i == 0) 
 				return false;
 			return true;
