@@ -21,7 +21,7 @@ import java.util.StringTokenizer;
  *  연결요소 개수구하기
  *  
  */
-public class search_DFS_depthFirst {
+public class search01_DFS_depthFirst {
 	static ArrayList<Integer>[] A;
 	static boolean visited[];
 	

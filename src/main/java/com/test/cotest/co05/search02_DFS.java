@@ -10,7 +10,7 @@ import java.util.Stack;
  * 1. 스택에서 노드를 꺼내고 방문했다고 표시
  * 2. 해당 노드의 인접노드들을 스택에 넣고 방문 여부 체크함
  */
-public class search_DFS {
+public class search02_DFS {
 
 	public void dfs(List<Integer>[] graph, int start, boolean[] visited) {
 		// 스택 선언
