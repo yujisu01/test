@@ -1,5 +1,6 @@
 package com.test.cotest.co05;
 
+import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,10 +43,15 @@ public class search05_DFS_findFriend {
 		}
 		
 		//for문 M개수만큼 반복 (엣지)
-		// A인접리스트에 그래프 데이터 저장
+		//M은 입력으로 주어진 엣지(간선의수)이다. 
 		for(int i=0; i<M; i++) {
+			// S는 시작노드, E는 끝노드를 입력받는거임
 			int S=sc.nextInt();
 			int E=sc.nextInt();
+			// 노드 'S'(시작)에 연결된 노드들을 리스트로 저장하고있는 인접리스트에서 S의 리스트에 E를 add
+			// 노드 'E'의 리스트에 S를 add
+			// 이렇게 함으로써 엣지를 사용하여 노드들간의 관계를 표현할수가 있다.
+			// 즉 엣지연결 
 			A[S].add(E);
 			A[E].add(S);
 		}
@@ -55,10 +61,12 @@ public class search05_DFS_findFriend {
 			break;
 		}
 		
+		// 최종적으로 arrive 변수 값이 true면 '1'을, false면 '0'을 출력
 		if(arrive) System.out.println("1");
 		else System.out.println("0");
 	}
-
+	// 이 DFS 알고리즘에서는 현재노드에서 갈수있는 인접한 노드를 찾아가면서 깊이를 1씩 증가시킨다.
+	// 깊이가 5에 도달하면 탐색종료
 	public static void DFS(int now, int depth) {
 		// 만약 depth가 5거나, 이미 목적지에 도착한 경우에는
 		if(depth == 5 || arrive) {	
@@ -67,16 +75,17 @@ public class search05_DFS_findFriend {
 			// 함수종료
 			return;
 		}
-		// 방문노드 표시를 위해 visited[now] = true구문 실행
+		// 방문노드 표시를 위해 visited[] 에 체크
 		visited[now] = true;
 		
+		// DFS 함수를 재귀호출한다
 		for(int i: A[now]) {
 			if(!visited[i]) {
 				DFS(i, depth+1);
 			}
 		}
-		// 이후 DFS함수 호출 이전상태로 돌아오기 위해 방문한노드를 다시 방문하지 않도록
-		// 이 구문실행
+		// 이후 재귀호출이 끝나면 DFS함수 호출 이전상태로 돌아오기 위해 방문한노드를 다시 방문하지 않도록
+		// 이 구문실행 (체크해제)
 		// 백트래킹 구현하며, 다음탐색시에는 이전에 방문한 노드를 다시 방문할수 있도록함
 		visited[now] = false;
 		
