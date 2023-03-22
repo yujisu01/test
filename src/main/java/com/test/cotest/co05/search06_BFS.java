@@ -1,4 +1,9 @@
 package com.test.cotest.co05;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 /*
  * 너비우선탐색(BFS: breadth first search) 
  * 시작노드에서 출발해, 시작노드를 기준으로 가까운 노드를 먼저 방문하면서 탐색한다
@@ -35,5 +40,51 @@ package com.test.cotest.co05;
 
  */
 public class search06_BFS {
+	static boolean visited[];
+	static ArrayList<Integer>[] A;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N =sc.nextInt();
+		int M =sc.nextInt();
+		int start =sc.nextInt();
+		A= new ArrayList[N+1];
+		
+		// (1) for문 N개 개수만큼 A 인접리스트 각 ArrayList 초기화 
+		for(int i=1; i<=N; i++) {
+			A[i] = new ArrayList<Integer>();
+		}
+		
+		// (2) for문 M개 개수만큼 A 인접리스트 그래프 데이터 저장 (엣지)
+		// 엣지를 사용하여 노드들간 관계표현 (엣지연결)
+		for(int i=0; i<M; i++) {
+			int S = sc.nextInt();
+			int E = sc.nextInt();
+			A[S].add(E);
+			A[E].add(S);
+		}
+		// 위 문제에서 방문할수 있는 노드가 여러개일 경우 노드번호가 작은걸 먼저 방문하라고 했음
+		// (3) for문, 번호가 작은것을 먼저 방문하기 위해 정렬하기
+		for(int i=1; i<=N; i++) {
+			// List인터페이스를 구현한 컬렉션(List,ArrayList등)을 정렬하는 메소드임. 
+			// 오름차순 정렬이 기본 (근데 Comparator 이용해서 내림차순 정렬도 가능)
+			Collections.sort(A[i]);
+		}
+		
+		visited = new boolean[N+1];	// 방문 배열 초기화 해서 DFS 맞이함
+		DFS(start);
+		System.out.println();
+		visited = new boolean[N+1];	// 방문 배열 초기화 해서 BFS 맞이
+		BFS(start);
+		System.out.println();
+		
+	}
+	// DFS 구현
+	public static void DFS(int node) {
+		
+	}
+	// BFS 구현
+	public static void BFS(int node) {
+		
+	}
 
 }
