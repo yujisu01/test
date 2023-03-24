@@ -3,6 +3,8 @@ package com.test.cotest.co05;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 /*
@@ -46,6 +48,51 @@ public class search07_miro {
 				A[i][j] = Integer.parseInt(line.substring(j, j+1));
 			}
 		}
+		BFS(0,0);
+		System.out.println(A[N-1][M-1]);
 	}
+	public static void BFS(int i,int j) {
+		// <int[]> 는 큐에 담을 데이터 타입을 지정하는거 즉 int[]배열을 큐에 담는거
+		// 예를들어 문자열을 담는다면 Queue<String> 으로 지정해줄수 있다 
+		Queue<int[]> q = new LinkedList<int[]>();
+		// 큐의 맨뒤에 지정된 요소를 추가한다. 
+		// 큐 맨뒤에 크각 2인 int배열 [i,j]를 추가하는 코드이다. 
+		q.offer(new int[] {i,j});
+		// q.offer ~ 대신 아래 코드도 가능 
+		// int[] position = new int[] {i,j};
+		// q.offer(position); 
+		visited[i][j] = true; 	// 방문 체크
+		while(!q.isEmpty()) {
+			int now[] = q.poll();
+			// 상하좌우 탐색 
+			for(int k=0; k<4; k++) {
+				int x = now[0] + dx[k];
+				int y = now[1] + dy[k];
+				// 좌표 유효성 검사
+				// x,y 0이상이고, x,y가 각각 N,M보다 작으면
+				if(x >= 0 && y >= 0 && x < N && y < M) {
+					// 갈수있는칸이고 (0이 아니고), 방문한칸이 아니면
+					if(A[x][y] != 0 && !visited[x][y]) {
+						visited[x][y] = true;
+						A[x][y] = A[now[0]][now[1]] + 1; 	// 깊이 업데이트 하기
+						int[] position = new int[] {x,y};
+						q.add(position);
+					}
+				}
+			}
+		}
+	} 
 
 }
+
+// 예제입력
+/*
+ * 4 6
+ * 110110
+ * 110110
+ * 111111
+ * 111101
+ * 
+ * 예제출력
+ * 9
+ */
