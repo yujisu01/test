@@ -22,9 +22,9 @@ public class search07_miro {
 	static int[][] A;				// 데이터 저장 2차원 행렬 A 선언
 	static int N,M;					// N은 행, M은 열
 	static boolean[][] visited;		// 방문 확인 배열
-	// 상하좌우 탐색하기위한 배열
-	static int[] dx= {0,1,0,-1};
-	static int[] dy= {1,0,-1,0};
+	// 상하좌우 탐색하기위한 배열 (이동방향을 나타내는 상수배열)
+	static int[] dx= {0,1,0,-1};	// 북동남서 위에서 아래로 증가?
+	static int[] dy= {1,0,-1,0};	// 동북서남 왼쪽에서 오른쪽으로 증가?
 	public static void main(String[] args) throws IOException{
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -49,13 +49,15 @@ public class search07_miro {
 			}
 		}
 		BFS(0,0);
+		// A[N][M]은 인덱스 범위 벗어남
 		System.out.println(A[N-1][M-1]);
 	}
+	// 시작점 i,j 전달 
 	public static void BFS(int i,int j) {
 		// <int[]> 는 큐에 담을 데이터 타입을 지정하는거 즉 int[]배열을 큐에 담는거
 		// 예를들어 문자열을 담는다면 Queue<String> 으로 지정해줄수 있다 
 		Queue<int[]> q = new LinkedList<int[]>();
-		// 큐의 맨뒤에 지정된 요소를 추가한다. 
+		// 큐의 맨뒤에 새로운 요소 추가
 		// 큐 맨뒤에 크각 2인 int배열 [i,j]를 추가하는 코드이다. 
 		q.offer(new int[] {i,j});
 		// q.offer ~ 대신 아래 코드도 가능 
@@ -66,15 +68,16 @@ public class search07_miro {
 			int now[] = q.poll();
 			// 상하좌우 탐색 
 			for(int k=0; k<4; k++) {
+				// 현재 지점에서 이동한 다음 지점의 조ㅏ표 계산
 				int x = now[0] + dx[k];
 				int y = now[1] + dy[k];
-				// 좌표 유효성 검사
+				// 좌표 유효성 검사 (미로범위를 벗어나나요?..)
 				// x,y 0이상이고, x,y가 각각 N,M보다 작으면
 				if(x >= 0 && y >= 0 && x < N && y < M) {
 					// 갈수있는칸이고 (0이 아니고), 방문한칸이 아니면
 					if(A[x][y] != 0 && !visited[x][y]) {
 						visited[x][y] = true;
-						A[x][y] = A[now[0]][now[1]] + 1; 	// 깊이 업데이트 하기
+						A[x][y] = A[now[0]][now[1]] + 1; 	// 깊이 업데이트 하기, 시작점으로부터 거리정보 저장
 						int[] position = new int[] {x,y};
 						q.add(position);
 					}
