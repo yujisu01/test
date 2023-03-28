@@ -32,51 +32,51 @@ import java.util.Scanner;
  * 출력
  * 41523 중에서 13795 정수가 있는지
  */
-public class search09_binarySearch {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		// 변수선언에 따른 문제점..
-		//int M = sc.nextInt();
-		int[] A = new int[N];
-		for(int i=0; i<N; i++) {
-			A[i] = sc.nextInt();
-		} 
-		// A배열 오름차순 정렬
-		Arrays.sort(A);
-		int M = sc.nextInt();
-		// for문 M개수만큼 돌리기
-		for(int i=0; i<M; i++) {
-			boolean find = false;
-			int target = sc.nextInt();
-			// 이진탐색 시작 (시작인덱스 start(0), 종료인덱스(A배열 -1)
-			int start=0;
-			int end= A.length-1;
-			
-			while(start<=end) {
-				int mid = (start+end)/2;
-				int midV = A[mid];
+	public class search09_binarySearch {
+		public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+			int N = sc.nextInt();
+			// 변수선언에 따른 문제점..
+			//int M = sc.nextInt();
+			int[] A = new int[N];
+			for(int i=0; i<N; i++) {
+				A[i] = sc.nextInt();
+			} 
+			// A배열 오름차순 정렬
+			Arrays.sort(A);
+			int M = sc.nextInt();
+			// for문 M개수만큼 돌리기
+			for(int i=0; i<M; i++) {
+				boolean find = false;
+				int target = sc.nextInt();
+				// 이진탐색 시작 (시작인덱스 start(0), 종료인덱스(A배열 -1)
+				int start=0;
+				int end= A.length-1;
 				
-				// 중간값이 타겟값보다 크면 왼쪽 탐색
-				if(midV > target) {
-					end = mid-1;
-				}else if(midV < target) {
-					start = mid+1;
-				// 찾았으면 반복문 종료
-				}else {
-					find = true;
-					break;
+				while(start<=end) {
+					int mid = (start+end)/2;
+					int midV = A[mid];
+					
+					// 중간값이 타겟값보다 크면 왼쪽 탐색
+					if(midV > target) {
+						end = mid-1;
+					}else if(midV < target) {
+						start = mid+1;
+					// 찾았으면 반복문 종료
+					}else {
+						find = true;
+						break;
+					} 
+				}
+				if(find) {
+					System.out.println("1"); 
+				}else { 
+					System.out.println("0");
 				} 
 			}
-			if(find) {
-				System.out.println("1"); 
-			}else { 
-				System.out.println("0");
-			} 
 		}
+	
 	}
-
-}
 
 
 /*
