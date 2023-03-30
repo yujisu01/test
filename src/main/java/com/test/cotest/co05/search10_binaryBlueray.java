@@ -51,10 +51,13 @@ public class search10_binaryBlueray {
 			}
 			// 탐색후 sum이 0 이 아니면 블루레이가 1개 더 필요하므로 count++
 			if(sum != 0) count++;
+			// 중간인덱스값으로 모든 레슨저장 불가능 하면
 			if(count>M) start = mid + 1; 
+			// 중간인덱스값으로 모든 레슨 저장가능하면
 			else end = mid - 1;
 		}
 		System.out.println(start);
 	}
 
 }
+//다시
