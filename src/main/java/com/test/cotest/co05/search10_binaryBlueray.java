@@ -1,5 +1,6 @@
 package com.test.cotest.co05;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -33,16 +34,25 @@ public class search10_binaryBlueray {
 		for(int i=0; i<N; i++) {
 			A[i] = sc.nextInt();
 			// 레슨 최댓값을 시작인덱스로 저장하기
-			// 
+			// end변수는 배열A에서 입력받은 정수를 모두 더한값으로 초기화
+			// 괄호생략 ㄱㅏ능
 			if(start < A[i]) start = A[i];
 			end = end + A[i];
 		}
+		// 정렬 안해주면 결과가 다르게 나오므로 sort 해줬음
+		// ex(1) 3 2 
+		// 	  5 6 2 
+		// ex(2) 3 2
+		// 		2 5 6 다르게나옴
+		Arrays.sort(A);
+		
 		while(start<=end) {
 			int mid = (start+end)/2;
 			int sum=0;
 			int count=0;
+			
 			// mid 값으로 모든 레슨 저장할수 있는지확인
-			for(int i=0; i<N; i++) {
+			for(int i=0; i<N; i++) { 
 				if(sum + A[i] > mid) {
 					count++;
 					sum=0;
@@ -60,4 +70,3 @@ public class search10_binaryBlueray {
 	}
 
 }
-//다시
