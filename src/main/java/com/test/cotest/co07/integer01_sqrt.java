@@ -37,6 +37,24 @@ public class integer01_sqrt {
 		for(int i=2; i<=N; i++) {
 			A[i] = i;
 		}
+		// 제곱근까지만 수행하기
+		// i가 N의 제곱근보다 클경우 i*i가 N보다 큰값이 되므로 
+		for(int i=2; i<=Math.sqrt(N); i++) {
+			// 0인거 continue 
+			if(A[i] == 0) {
+				continue;
+			}
+			// i의 배수, N까지, j에 i를 더해가면서
+			// 소수가 아니면 0으로 만듬
+			for(int j= i+i; j<= N; j=j+i) {
+				A[j] = 0;
+			}
+		}
+		for(int i=M; i<=N; i++) {
+			if (A[i] != 0) {
+				System.out.println(A[i]); 
+			}
+		}
 	}
 
 }
