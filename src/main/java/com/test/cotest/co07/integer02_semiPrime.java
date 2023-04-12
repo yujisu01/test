@@ -32,7 +32,7 @@ public class integer02_semiPrime {
 			if (A[i] == 0) { 
 				continue; 
 			}
-			for(int j= i+i; j< A.length; j=j+i) { 
+			for(int j= i+i; j< A.length; j=j+i) {  
 				A[j] = 0; 
 			}
 			System.out.printf("A[i]" + A[i] + "\n");

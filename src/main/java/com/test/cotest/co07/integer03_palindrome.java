@@ -19,38 +19,45 @@ public class integer03_palindrome {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
-		int[] A = new int[100001];
+		int[] A = new int[10000];
 		
-		for(int i=2; i< A.length; i++) {
+		for(int i = 2; i < A.length; i++) {
 			A[i] = i;
 		}
-		for(int i=2; i<Math.sqrt(A.length); i++) {
-			if(A[i] == 0) { 
+		
+		for(int i = 2; i < Math.sqrt(A.length); i++) {
+			if(A[i] == 0) {
 				continue;
 			}
-			for(int j=i+i; j<A.length; j=j+i) {
+			for(int j= i+i; j< A.length; j=j+i) {
 				A[j] = 0;
 			}
 		}
+		// 입력받은 숫자부터 소수 팰린드롬을 찾아야 하기 떄문에 N으로 초기화 (시작점 표시)
+		// 아래 while문에서 i는 N보다 큰값으로 시작하게 된다 
 		int i = N;
 		
+		// 이 while문에서 소수이고, 팰린드롬 수 출력
 		while(true) {
 			if(A[i] != 0) {
-				int result= A[i];
+				int result = 0;
 				if(palindrome(result)) {
 					System.out.println(result);
-					break; 
+					break;
 				}
 			}
-			i++;
 		}
+		i++;
+		
 	}
 	private static boolean palindrome(int result) {
+		// 입력받은 숫자를 문자열로 변환하여 char배열로 temp[] 에 담음.
 		char temp[] = String.valueOf(result).toCharArray();
-		int s = 0;
-		int e = temp.length-1;
+		int s=0;
+		int e=temp.length-1;
 		while(s<e) {
-			if(temp[s] != temp[e]) return false; 
+			// 문자가 다르면 false반환, s 하나씩 증가, e는 감소하며 문자 비교
+			if(temp[s] != temp[e]) return false;
 			s++;
 			e--;
 		}
