@@ -1,5 +1,4 @@
 package com.test.cotest.co07;
-//모르겠음;
 import java.util.Scanner;
 
 /*
@@ -19,6 +18,7 @@ import java.util.Scanner;
 public class integer02_semiPrime {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		// 입력순서...반대로 입력해서 계속 0으로 나오암;
 		long min = sc.nextLong();
 		long max = sc.nextLong();
 		
