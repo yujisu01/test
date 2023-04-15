@@ -59,3 +59,25 @@ ORDER BY MONTH ASC, CAR_ID DESC
 개어렵네
 
 
+--다른정답(2)
+
+/* PARTITION BY 문 사용
+ * COUNT(*) OVER 함수를 사용하여 각 월별, 차량별로 대여기록수(RECORDS)와 차량전체의 대여기록수(FILTER)를 계산
+ *   (1) FROM 서브쿼리에서 SELECT구문에 쓸컬럼들 추출
+ *   (2) WHERE 문에 8~10월에 해당하는 모든 대여 이력 조건 걸어줌 
+ * WHERE문에서는 FILTER 에 해당하는거 (COUNT(*)) 5개이상이면 출력하도록 조건걸어줌
+
+SELECT MONTH, CAR_ID, RECORDS
+FROM 
+	(SELECT DISTINCT TO_CHAR(START_DATE, 'MM') AS MONTH,
+	                 CAR_ID,
+	                 COUNT(*) OVER(PARTITION BY TO_CHAR(START_DATE, 'MM'), CAR_ID) AS RECORDS,
+	                 COUNT(*) OVER(PARTITION BY CAR_ID) AS FILTER
+	FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+	WHERE TO_CHAR(START_DATE, 'YYYY-MM-DD') BETWEEN '2022-08-01' AND '2022-10-31'
+	)
+WHERE FILTER >= 5 
+ORDER BY MONTH ASC, CAR_ID DESC
+;
+
+
