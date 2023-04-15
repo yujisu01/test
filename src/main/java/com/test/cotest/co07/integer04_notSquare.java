@@ -20,24 +20,33 @@ public class integer04_notSquare {
 		long max = sc.nextLong();
 		// 최댓값과 최소값의 차이만큼 배열 선언하기
 		boolean[] check = new boolean[(int)(max - min + 1)];
+		
 		// 2의 제곱수인 4부터 max보다 작거나 같은값까지 반복하기
 		for(int i=2; i*i <= max; i++) {
 			long pow = i*i;
 			long start_index = min/pow;
 			// 나머지가 있으면 1을 더해야 min보다 큰 제곱수에서 시작됨
+			// min이 i*i의 배수가 아닌경우를 검사
 			if(min % pow != 0) start_index++;
 			
-			for(long j = start_index; pow * j<=max; j++) {
+			// 여기부터 
+			// j의 제곱수가 max범위내에 있는지 확인
+			for(long j = start_index; j * pow <= max; j++) {
+				// j*pow는 현재 반복에서 체크해야할수인데 
+				// check배열에서 인덱스가 되려면 min을 빼줘야댐
 				check[(int) ((j * pow) - min)] = true;
 			}
 		}
+		
 		int count = 0;
-		for(int i=0;i<=max-min; i++) {
+		// 배열check의 크기는 (max-min+1)이므로 
+		// 제곱수의 배수가 아닌수의 개수 구하기
+		for(int i=0;i<max-min+1; i++) {
 			if(!check[i]) {
-				count++;
+				count++; 
 			}
 		}
 		System.out.println(count);
-	}
+	} 
 
 }
