@@ -65,4 +65,3 @@ AND (B.SEX_UPON_OUTCOME LIKE 'Spayed%' OR B.SEX_UPON_OUTCOME LIKE 'Neutered%')
 ORDER BY B.ANIMAL_ID
 ;
 
-괄호를 왜쳐야돼
